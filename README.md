@@ -19,8 +19,7 @@ This is the basic web page, that allows to get authenticated via mobile phone nu
 
 ## Demo
 
-- [Link to demo](https://eugenenc-d7f8c.web.app/)
-- [Link to demo2](https://ssreugenencd7f8c-jb7sguzcda-ew.a.run.app/)
+- [Link to demo](https://ssreugenencd7f8c-jb7sguzcda-ew.a.run.app/)
 
 ## Features
 
