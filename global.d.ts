@@ -1,6 +1,4 @@
-declare global {
-    interface Window {
-        confirmationResult: any;
-        recaptchaVerifier: any;
-    }
+interface Window {
+    confirmationResult: any;
+    recaptchaVerifier: any;
 }
