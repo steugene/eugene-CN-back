@@ -2,26 +2,135 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+/*:root {*/
+/*  --foreground-rgb: 0, 0, 0;*/
+/*  --background-start-rgb: 214, 219, 220;*/
+/*  --background-end-rgb: 255, 255, 255;*/
+/*}*/
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --foreground-rgb: 255, 255, 255;*/
+/*    --background-start-rgb: 0, 0, 0;*/
+/*    --background-end-rgb: 0, 0, 0;*/
+/*  }*/
+/*}*/
+
+/*body {*/
+/*  color: rgb(var(--foreground-rgb));*/
+/*  background: linear-gradient(*/
+/*      to bottom,*/
+/*      transparent,*/
+/*      rgb(var(--background-end-rgb))*/
+/*    )*/
+/*    rgb(var(--background-start-rgb));*/
+/*}*/
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    background-color: black;
+    color: green;
+    font-family: "Courier New", monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    background-color: black;
+    color: lime;
+    border: 1px solid lime;
+    padding: 20px;
+    text-align: center;
+}
+
+.dos-input {
+    background-color: black;
+    color: lime;
+    border: 1px solid lime;
+    margin-top: 10px;
+    padding: 2px;
+    font-family: "Courier New", monospace;
+    width: 100%;
+}
+
+.dos-button {
+    background-color: black;
+    color: lime;
+    border: 1px solid lime;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: "Courier New", monospace;
+    margin-top: 10px;
+}
+
+.cursor {
+    animation: blink 1s step-start infinite;
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: lime;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 0;
+    }
+    51%, 100% {
+        opacity: 1;
+    }
+}
+
+
+.dos-container {
+    background-color: black;
+    color: green;
+    font-family: "Courier New", monospace;
+    padding: 20px;
+    border: 1px solid green;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dos-input {
+    background-color: black;
+    color: lime;
+    border: 1px solid lime;
+    margin-top: 10px;
+    padding: 2px;
+    font-family: "Courier New", monospace;
+    width: 100%;
+}
+
+.dos-button {
+    background-color: black;
+    color: lime;
+    border: 1px solid lime;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: "Courier New", monospace;
+    margin-top: 10px;
+}
+
+.cursor {
+    animation: blink 1s step-start infinite;
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: lime;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 0;
+    }
+    51%, 100% {
+        opacity: 1;
+    }
 }
