@@ -4,7 +4,7 @@ import { auth } from '@/firebase/config'
 import { IUser } from '@/firebase/firestore/types'
 
 type IContext = {
-  user: IUser;
+  user: IUser
 }
 
 export const AuthContext = React.createContext<IContext>({} as IContext)

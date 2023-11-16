@@ -6,19 +6,21 @@ import { signOut } from 'firebase/auth'
 import { auth } from '@/firebase/config'
 import addData from '@/firebase/firestore/addData'
 import getDocument from '@/firebase/firestore/getData'
-import { IUser } from '@/firebase/firestore/types';
-
+import { IUser } from '@/firebase/firestore/types'
 
 function Page() {
-  const { user } = useAuthContext();
+  const { user } = useAuthContext()
   const router = useRouter()
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [emailError, setEmailError] = React.useState("")
+  const [emailError, setEmailError] = React.useState('')
 
   React.useEffect(() => {
     if (auth.currentUser?.phoneNumber) {
-      getDocument('users', auth.currentUser.phoneNumber).then((res ) => {
+      getDocument({
+        collection: 'users',
+        id: auth.currentUser.phoneNumber,
+      }).then((res) => {
         const responseData = res.result as unknown as { data: () => IUser }
         if (responseData) {
           setUsername(responseData.data().name || '')
@@ -33,31 +35,34 @@ function Page() {
   }
 
   const handleEmailChange = (e) => {
-    const newEmail = e.target.value;
+    const newEmail = e.target.value
     setEmail(newEmail)
     // Basic email validation
     if (!isValidEmail(newEmail)) {
-      setEmailError("Invalid email address");
+      setEmailError('Invalid email address')
     } else {
-      setEmailError("");
+      setEmailError('')
     }
   }
 
   const isValidEmail = (email) => {
     // Basic email format validation using regular expression
-    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    return emailPattern.test(email);
-  };
+    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+    return emailPattern.test(email)
+  }
 
   const handleForm = async () => {
     if (!auth?.currentUser?.phoneNumber) {
-      return;
+      return
     }
-    const { result, error } = await addData(
-      'users',
-      auth.currentUser.phoneNumber,
-      { email, name: username },
-    )
+    const { error } = await addData({
+      collection: 'users',
+      id: auth.currentUser.phoneNumber,
+      data: {
+        email,
+        name: username,
+      },
+    })
 
     if (error) {
       return console.log(error)
@@ -90,7 +95,7 @@ function Page() {
             onChange={handleEmailChange}
           />
         </div>
-        {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+        {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
         <button className="dos-button" onClick={handleForm}>
           submit
         </button>

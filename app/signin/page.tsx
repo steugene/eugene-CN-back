@@ -1,13 +1,17 @@
 'use client'
 import React from 'react'
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
+import {
+  ConfirmationResult,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { auth } from '@/firebase/config'
 
 function Page() {
-  const [phone, setPhone] = React.useState('' as string)
-  const [code, setCode] = React.useState('' as string)
-  const [conf, setConf] = React.useState(null as any)
+  const [phone, setPhone] = React.useState('')
+  const [code, setCode] = React.useState('')
+  const [conf, setConf] = React.useState(null as ConfirmationResult)
   const router = useRouter()
 
   React.useEffect(() => {
@@ -20,9 +24,7 @@ function Page() {
     })
   }, [])
 
-  const handleForm = async (event: any) => {
-    event.preventDefault()
-
+  const handleForm = async () => {
     conf
       .confirm(code)
       .then((result) => {
